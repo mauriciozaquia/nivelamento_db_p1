@@ -1,2 +1,2 @@
-user,password
-standard_user,secret_sauce
+user,email,password
+teste,a@a.com.br,123123
