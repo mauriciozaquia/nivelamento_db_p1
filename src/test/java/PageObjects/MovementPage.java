@@ -4,6 +4,11 @@ import Framework.Browser.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class MovementPage {
     private WebDriver driver;
@@ -16,6 +21,15 @@ public class MovementPage {
 
     public WebElement getTipoDaMovimentacaoSelect() {
         return waits.visibilityOfElement(By.id("tipo"));
+    }
+    public void selectTipoDaMovimentacao(String tipo) {
+        getTipoDaMovimentacaoSelect().click();
+        List<WebElement> list = driver.findElements(By.cssSelector("#tipo option"));
+        for (WebElement element : list) {
+            if (element.getText().equals(tipo)) {
+                element.click();
+            }
+        }
     }
 
     public WebElement getDataMovimentacaoInput() {
@@ -38,8 +52,18 @@ public class MovementPage {
         return waits.visibilityOfElement(By.id("valor"));
     }
 
-    public WebElement getContaInput() {
+    public WebElement getContaSelect() {
         return waits.visibilityOfElement(By.id("conta"));
+    }
+
+    public void selectConta(String conta) {
+        getContaSelect().click();
+        List<WebElement> list = driver.findElements(By.cssSelector("#conta option"));
+        for (WebElement element : list) {
+            if (element.getText().equals(conta)) {
+                element.click();
+            }
+        }
     }
 
     public WebElement getSituacaoPagoRadio() {

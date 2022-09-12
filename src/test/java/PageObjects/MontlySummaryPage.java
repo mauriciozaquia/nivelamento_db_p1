@@ -57,7 +57,6 @@ public class MontlySummaryPage {
     }
 
     public void cleanTableMovement(){
-        //List<WebElement> list = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector("#tabelaExtrato tbody tr")));
         List<WebElement> list = driver.findElements(By.cssSelector("#tabelaExtrato tbody tr"));
         for (WebElement element : list) {
             getRemoveIcon().click();
