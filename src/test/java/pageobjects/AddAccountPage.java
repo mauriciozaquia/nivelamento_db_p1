@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import Framework.Browser.Waits;
 import org.openqa.selenium.By;

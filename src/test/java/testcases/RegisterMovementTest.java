@@ -1,18 +1,18 @@
-package TestCases;
+package testcases;
 
 import Framework.Report.Report;
 import Framework.Report.ReportType;
 import Framework.Report.Screenshot;
 import Framework.TestBase;
 import Model.Movement;
-import Tasks.*;
+import tasks.*;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.WebDriver;
 
-public class registerMovementTest extends TestBase {
+public class RegisterMovementTest extends TestBase {
     private WebDriver driver = this.getDriver();
     LoginTask login = new LoginTask(driver);
     RegisterTask register = new RegisterTask(driver);
@@ -24,7 +24,7 @@ public class registerMovementTest extends TestBase {
     private Movement movementDespesa;
 
     @BeforeEach
-    public void configura() {
+    public void configuracaoInicial() {
         movementReceita = new Movement();
         movementReceita.setTipoDaMovimentacao("Receita");
         movementReceita.setDataDaMovimentacao("10/09/2022");

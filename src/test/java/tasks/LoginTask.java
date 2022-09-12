@@ -1,10 +1,10 @@
-package Tasks;
+package tasks;
 
 import Framework.Utils.FakersGeneration;
-import PageObjects.LoginPage;
-import PageObjects.WidgetNavBar;
-import Validations.GenericValidation;
-import Validations.LoginValidation;
+import pageobjects.LoginPage;
+import pageobjects.WidgetNavBar;
+import validations.GenericValidation;
+import validations.LoginValidation;
 import org.openqa.selenium.WebDriver;
 
 public class LoginTask {

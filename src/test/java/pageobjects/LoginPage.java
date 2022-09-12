@@ -1,22 +1,17 @@
-package PageObjects;
+package pageobjects;
 
 import Framework.Browser.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class RegistrationPage {
-
+public class LoginPage {
     private WebDriver driver;
     private Waits waits;
 
-    public RegistrationPage(WebDriver driver) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
         waits = new Waits(this.driver);
-    }
-
-    public WebElement getNameInput() {
-        return waits.visibilityOfElement(By.id("nome"));
     }
 
     public WebElement getLoginInput() {
@@ -27,7 +22,15 @@ public class RegistrationPage {
         return waits.visibilityOfElement(By.id("senha"));
     }
 
-    public WebElement getRegisterButton() {
+    public WebElement getLoginButton() {
         return waits.visibilityOfElement(By.cssSelector(".btn.btn-primary"));
+    }
+
+    public WebElement getLoginNavBarButton() {
+        return waits.visibilityOfElement(By.cssSelector(".navbar li:nth-child(1) a"));
+    }
+
+    public WebElement getNewUserNavBarButton() {
+        return waits.visibilityOfElement(By.cssSelector(".navbar li:nth-child(2) a"));
     }
 }

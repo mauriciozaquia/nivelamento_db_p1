@@ -1,9 +1,9 @@
-package Validations;
+package validations;
 
 import Framework.Browser.Waits;
 import Framework.Report.Report;
 import Framework.Report.Screenshot;
-import PageObjects.GenericPage;
+import pageobjects.GenericPage;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;

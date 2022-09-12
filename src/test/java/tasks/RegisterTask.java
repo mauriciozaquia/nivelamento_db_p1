@@ -1,6 +1,6 @@
-package Tasks;
+package tasks;
 
-import PageObjects.RegistrationPage;
+import pageobjects.RegistrationPage;
 import org.openqa.selenium.WebDriver;
 
 public class RegisterTask {

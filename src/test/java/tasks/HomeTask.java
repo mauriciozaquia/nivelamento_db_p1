@@ -1,10 +1,10 @@
-package Tasks;
+package tasks;
 
-import PageObjects.HomePage;
-import PageObjects.WidgetNavBar;
-import Validations.AddAccountValidation;
-import Validations.MontlySummaryValidation;
-import Validations.MovementValidation;
+import pageobjects.HomePage;
+import pageobjects.WidgetNavBar;
+import validations.AddAccountValidation;
+import validations.MontlySummaryValidation;
+import validations.MovementValidation;
 import org.openqa.selenium.WebDriver;
 
 public class HomeTask {

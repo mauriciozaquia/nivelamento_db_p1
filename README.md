@@ -18,7 +18,7 @@ Além disto é bom ter uma IDE Java para trabalhar com o código como por exempl
 ### EXECUÇÃO
 
 * Abra o projeto "nivelamento_db_p1"
-* Navegar até o pacote src/test/java/TestCases/
+* Navegar até o pacote src/test/java/testcases/
 * Na classe *registerMovementTest* clicar com o botão direito
 * Clicar no menu "Run registerMovementTest
 
@@ -37,3 +37,8 @@ Além disto é bom ter uma IDE Java para trabalhar com o código como por exempl
 * Passo 5: Inserir movimentações
 * Passo 6: Validar as movimentações inseridas
 * Passo 7: Validar saldo conforme as movimentações criadas
+
+### Observações
+* 1 - O site valida emails já criados anteriormente, foi considera um unico email para esse teste (Teste com cenário controlado).
+* 2 - O site valida contas já criadas anteriormente, foi feita uma validação para essa situação.
+* 3 - O script limpa movimentações inseridas anteriormente (Teste com cenário controlado).

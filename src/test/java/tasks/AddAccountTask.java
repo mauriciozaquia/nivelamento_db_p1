@@ -1,8 +1,8 @@
-package Tasks;
+package tasks;
 
-import PageObjects.AddAccountPage;
-import PageObjects.WidgetAlert;
-import Validations.AddAccountValidation;
+import pageobjects.AddAccountPage;
+import pageobjects.WidgetAlert;
+import validations.AddAccountValidation;
 import org.openqa.selenium.WebDriver;
 
 public class AddAccountTask {

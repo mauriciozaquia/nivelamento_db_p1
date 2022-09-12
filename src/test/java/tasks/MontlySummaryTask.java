@@ -1,12 +1,8 @@
-package Tasks;
+package tasks;
 
 import Model.Movement;
-import PageObjects.HomePage;
-import PageObjects.MontlySummaryPage;
-import PageObjects.WidgetNavBar;
-import Validations.AddAccountValidation;
-import Validations.MontlySummaryValidation;
-import Validations.MovementValidation;
+import pageobjects.MontlySummaryPage;
+import validations.MontlySummaryValidation;
 import org.openqa.selenium.WebDriver;
 
 public class MontlySummaryTask {

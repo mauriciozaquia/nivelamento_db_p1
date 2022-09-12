@@ -1,8 +1,8 @@
-package Tasks;
+package tasks;
 
 import Model.Movement;
-import PageObjects.MovementPage;
-import Validations.MovementValidation;
+import pageobjects.MovementPage;
+import validations.MovementValidation;
 import org.openqa.selenium.WebDriver;
 
 public class MovementTask {
