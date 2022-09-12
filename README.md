@@ -19,8 +19,10 @@ Além disto é bom ter uma IDE Java para trabalhar com o código como por exempl
 
 * Abra o projeto "nivelamento_db_p1"
 * Navegar até o pacote src/test/java/testcases/
-* Na classe *registerMovementTest* clicar com o botão direito
+* Na classe *registerMovementTest* clicar com o botão direito (Teste com email fixo)
+* Na classe *registerMovementTestFakeGeneration* clicar com o botão direito (Teste com email dinamico (randomico))
 * Clicar no menu "Run registerMovementTest
+
 
 ### GERAÇÃO DE RELATÓRIO
 
@@ -39,6 +41,9 @@ Além disto é bom ter uma IDE Java para trabalhar com o código como por exempl
 * Passo 7: Validar saldo conforme as movimentações criadas
 
 ### Observações
+#### Teste Fixo
 * 1 - O site valida emails já criados anteriormente, foi considera um unico email para esse teste (Teste com cenário controlado).
 * 2 - O site valida contas já criadas anteriormente, foi feita uma validação para essa situação.
 * 3 - O script limpa movimentações inseridas anteriormente (Teste com cenário controlado).
+#### Teste Dinâmico
+* 1 - O teste com email dinamico salva as informações randomicas geradas da ultima execução no arquivo de propriedade user.properties
