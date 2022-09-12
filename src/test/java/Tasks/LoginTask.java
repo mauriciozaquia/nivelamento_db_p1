@@ -24,7 +24,7 @@ public class LoginTask {
         widgetNavBar = new WidgetNavBar(this.driver);
     }
 
-    public void efetuarLogin(String email, String password) {
+    public void entrar(String email, String password) {
         widgetNavBar.getNavBarItemPorTexto("Login").click();
         loginValidation.validationLoginPage();
         //homePage.getLoginInput().sendKeys(fakersGeneration.getEmail());

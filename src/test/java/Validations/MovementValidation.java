@@ -3,7 +3,6 @@ package Validations;
 import Framework.Browser.Waits;
 import Framework.Report.Report;
 import Framework.Report.Screenshot;
-import PageObjects.AddAccountPage;
 import PageObjects.MovementPage;
 import PageObjects.WidgetAlert;
 import com.aventstack.extentreports.Status;
@@ -28,7 +27,7 @@ public class MovementValidation {
         try {
             waits.loadElement(movementPage.getContaInput());
             Assertions.assertTrue(movementPage.getContaInput().isDisplayed());
-            Report.log(Status.PASS, " Acessou a pagina Adicionar Movimento com sucesso", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Acessou a pagina Adicionar Movimento com sucesso", Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
@@ -38,7 +37,7 @@ public class MovementValidation {
         try {
             waits.loadElement(widgetAlert.getAlert());
             String alert = widgetAlert.getAlert().getText();
-            Assertions.assertEquals(alert, "Movimento adicionado com sucesso!");
+            Assertions.assertEquals("Movimentação adicionada com sucesso!", alert);
             Report.log(Status.PASS, "Inseriu o movimento com sucesso", Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));

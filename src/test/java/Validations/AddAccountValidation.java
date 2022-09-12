@@ -43,4 +43,15 @@ public class AddAccountValidation {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
+
+    public void validationRegisterAddAccountDuplicate() {
+        try {
+            waits.loadElement(widgetAlert.getAlert());
+            String alert = widgetAlert.getAlert().getText();
+            Assertions.assertEquals(alert, "Já existe uma conta com esse nome!");
+            Report.log(Status.PASS, "Verificou que já existe uma conta com esse nome inserida!", Screenshot.captureBase64(driver));
+        } catch (Exception e) {
+            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+        }
+    }
 }

@@ -32,8 +32,7 @@ public class MovementTask {
 
         movementPage.getSituacaoPagoRadio().click();
     }
-
-    public void salvarMovimento() {
+    public void save() {
         movementPage.getSalvarButton().click();
         movementValidation.validationMovementSucess();
     }
