@@ -4,16 +4,16 @@ import Framework.Report.Report;
 import Framework.Report.ReportType;
 import Framework.Report.Screenshot;
 import Framework.TestBase;
+import Framework.Utils.FilesOperation;
 import Model.Movement;
-import jdk.jfr.Description;
-import tasks.*;
 import com.aventstack.extentreports.Status;
+import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import tasks.*;
 
-public class RegisterMovementTest extends TestBase {
+public class RegisterMovementFakeGenerationTest extends TestBase {
     private WebDriver driver = this.getDriver();
     LoginTask login = new LoginTask(driver);
     RegisterTask register = new RegisterTask(driver);
@@ -47,17 +47,20 @@ public class RegisterMovementTest extends TestBase {
         movementDespesa.setSituaca("Pago");
     }
 
-    @ParameterizedTest
-    @CsvFileSource(resources = "/CSV/login.csv", numLinesToSkip = 1)
-    @Description("Validar inserir movimentações com sucesso - Email Fixo")
-    public void realizarMovimentacao(String user, String email, String password) {
+    @Test
+    @Description("Validar inserir movimentações com sucesso - Fake Generation")
+    public void realizarMovimentacaoDinamica() {
         try {
             Report.creatTest("Realizar registro de movimentação", ReportType.GROUP);
             Report.createStep("Realizar cadastro com sucesso");
             login.selectNewUser();
-            register.registerUser(user, email, password);
+            register.registerUserFakersGeneration();
             Report.createStep("Realizar login com sucesso");
-            login.entrar(email, password);
+
+            String email = FilesOperation.getProperties("user").getProperty("email");
+            String password = FilesOperation.getProperties("user").getProperty("senha");
+            login.entrar(email,password);
+
             Report.createStep("Cadastrar contas com sucesso");
             home.selectCreateAccount();
             addAccount.fillData("Receita");

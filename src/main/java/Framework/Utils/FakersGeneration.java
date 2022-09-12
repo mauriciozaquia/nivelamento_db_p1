@@ -36,5 +36,11 @@ public class FakersGeneration {
     public String getEmail() {
         return faker.name().firstName() + faker.name().lastName() + "@teste.com.br";
     }
-
+    public static String getEmailRandomico(String prefixo, int length) {
+        String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
+        String email = "";
+        String temp = RandomStringUtils.random(length, allowedChars);
+        email = prefixo + temp.substring(0, temp.length() - 9) + "@teste.com";
+        return email.trim();
+    }
 }
