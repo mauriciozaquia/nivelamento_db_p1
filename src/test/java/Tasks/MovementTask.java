@@ -19,17 +19,13 @@ public class MovementTask {
     }
 
     public void preencherCampos(Movement m) {
-        //movementPage.getTipoDaMovimentacaoSelect().click();
-        //movementPage.getTipoDaMovimentacaoSelect().sendKeys(m.getTipoDaMovimentacao());
-
+        movementPage.selectTipoDaMovimentacao(m.getTipoDaMovimentacao());
         movementPage.getDataMovimentacaoInput().sendKeys(m.getDataDaMovimentacao());
         movementPage.getDataDoPagamentoInput().sendKeys(m.getDataDoPagamento());
         movementPage.getDescricaoInput().sendKeys(m.getDescricao());
         movementPage.getInteressadoInput().sendKeys(m.getInteressado());
         movementPage.getValorInput().sendKeys(Double.toString(m.getValor()));
-
-        movementPage.getContaInput().click();
-
+        //movementPage.getContaInput().click();
         movementPage.getSituacaoPagoRadio().click();
     }
     public void save() {
