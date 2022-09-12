@@ -1,5 +1,6 @@
 package Tasks;
 
+import Model.Movement;
 import PageObjects.HomePage;
 import PageObjects.MontlySummaryPage;
 import PageObjects.WidgetNavBar;
@@ -15,13 +16,19 @@ public class MontlySummaryTask {
     public MontlySummaryTask(WebDriver driver) {
         this.driver = driver;
         montlySummaryPage = new MontlySummaryPage(this.driver);
+        montlySummaryValidation = new MontlySummaryValidation(this.driver);
     }
 
-    public void searchMovimentation() {
+    public void searchMovimentation(Movement m) {
         montlySummaryPage.selectMes("Setembro");
         montlySummaryPage.selectYear("2022");
         montlySummaryPage.getBuscarButton().click();
-        montlySummaryValidation.validationBalance();
+        if(m.getTipoDaMovimentacao().equals("Despesa")){
+            montlySummaryValidation.validationBalanceDespesa(m);
+        } else {
+            montlySummaryValidation.validationBalanceReceita(m);
+        }
+
     }
 
     public void cleanMovimentation(){

@@ -62,4 +62,23 @@ public class MontlySummaryPage {
             getRemoveIcon().click();
         }
     }
+
+    public WebElement getCampoContaTable(String texto){
+        List<WebElement> list = driver.findElements(By.cssSelector("#tabelaExtrato tbody tr td:nth-child(3)"));
+        for (WebElement element : list) {
+            if(element.getText().equals(texto)){
+                return element;
+            }
+        }
+        return null;
+    }
+    public WebElement getCampoValorTable(String texto){
+        List<WebElement> list = driver.findElements(By.cssSelector("#tabelaExtrato tbody tr td:nth-child(4)"));
+        for (WebElement element : list) {
+            if(element.getText().contains(texto)){
+                return element;
+            }
+        }
+        return null;
+    }
 }

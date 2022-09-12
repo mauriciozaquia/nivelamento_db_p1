@@ -20,26 +20,29 @@ public class registerMovementTest extends TestBase {
     MovementTask movement = new MovementTask(driver);
     AddAccountTask addAccount = new AddAccountTask(driver);
     MontlySummaryTask montlySummary = new MontlySummaryTask(driver);
-    private Movement movementReceita = new Movement();
-    private Movement movementDespesa = new Movement();
+    private Movement movementReceita;
+    private Movement movementDespesa;
 
     @BeforeEach
     public void configura() {
+        movementReceita = new Movement();
         movementReceita.setTipoDaMovimentacao("Receita");
         movementReceita.setDataDaMovimentacao("10/09/2022");
         movementReceita.setDataDoPagamento("10/09/2022");
         movementReceita.setDescricao("Teste de movimentação");
         movementReceita.setInteressado("Fulano de tal");
         movementReceita.setValor(10.00);
-        movementReceita.setConta("12345678");
+        movementReceita.setConta("Receita");
         movementReceita.setSituaca("Pago");
+
+        movementDespesa = new Movement();
         movementDespesa.setTipoDaMovimentacao("Despesa");
         movementDespesa.setDataDaMovimentacao("10/09/2022");
         movementDespesa.setDataDoPagamento("10/09/2022");
         movementDespesa.setDescricao("Teste de movimentação");
         movementDespesa.setInteressado("Fulano de tal");
         movementDespesa.setValor(5.00);
-        movementDespesa.setConta("12345678");
+        movementDespesa.setConta("Despesa");
         movementDespesa.setSituaca("Pago");
     }
 
@@ -71,7 +74,8 @@ public class registerMovementTest extends TestBase {
             movement.save();
             Report.createStep("Validar saldo com sucesso");
             home.selectMonthlySummary();
-            montlySummary.searchMovimentation();
+            montlySummary.searchMovimentation(movementReceita);
+            montlySummary.searchMovimentation(movementDespesa);
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }

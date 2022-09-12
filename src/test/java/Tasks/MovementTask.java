@@ -25,7 +25,7 @@ public class MovementTask {
         movementPage.getDescricaoInput().sendKeys(m.getDescricao());
         movementPage.getInteressadoInput().sendKeys(m.getInteressado());
         movementPage.getValorInput().sendKeys(Double.toString(m.getValor()));
-        //movementPage.getContaInput().click();
+        movementPage.selectConta(m.getConta());
         movementPage.getSituacaoPagoRadio().click();
     }
     public void save() {

@@ -25,8 +25,8 @@ public class MovementValidation {
 
     public void validationRedirectMovementPage() {
         try {
-            waits.loadElement(movementPage.getContaInput());
-            Assertions.assertTrue(movementPage.getContaInput().isDisplayed());
+            waits.loadElement(movementPage.getContaSelect());
+            Assertions.assertTrue(movementPage.getContaSelect().isDisplayed());
             Report.log(Status.PASS, "Acessou a pagina Adicionar Movimento com sucesso", Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
