@@ -9,6 +9,7 @@ import Model.Movement;
 import com.aventstack.extentreports.Status;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import tasks.*;
@@ -48,10 +49,11 @@ public class RegisterMovementFakeGenerationTest extends TestBase {
     }
 
     @Test
+    @Tag("Regressao")
     @Description("Validar inserir movimentações com sucesso - Fake Generation")
     public void realizarMovimentacaoDinamica() {
         try {
-            Report.creatTest("Realizar registro de movimentação", ReportType.GROUP);
+            Report.creatTest("Realizar registro de movimentação - Fakers Generation", ReportType.GROUP);
             Report.createStep("Realizar cadastro com sucesso");
             login.selectNewUser();
             register.registerUserFakersGeneration();

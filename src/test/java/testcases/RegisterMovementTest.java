@@ -6,6 +6,7 @@ import Framework.Report.Screenshot;
 import Framework.TestBase;
 import Model.Movement;
 import jdk.jfr.Description;
+import org.junit.jupiter.api.Tag;
 import tasks.*;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.BeforeEach;
@@ -49,10 +50,11 @@ public class RegisterMovementTest extends TestBase {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/CSV/login.csv", numLinesToSkip = 1)
+    @Tag("Regressao")
     @Description("Validar inserir movimentações com sucesso - Email Fixo")
     public void realizarMovimentacao(String user, String email, String password) {
         try {
-            Report.creatTest("Realizar registro de movimentação", ReportType.GROUP);
+            Report.creatTest("Realizar registro de movimentação - Email Fixo", ReportType.GROUP);
             Report.createStep("Realizar cadastro com sucesso");
             login.selectNewUser();
             register.registerUser(user, email, password);

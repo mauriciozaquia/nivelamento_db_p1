@@ -16,12 +16,17 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 Além disto é bom ter uma IDE Java para trabalhar com o código como por exemplo o [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/) ou [Ecplipse](https://www.eclipse.org/downloads/) dentre outras.
 
 ### EXECUÇÃO
-
+#### Classes
 * Abra o projeto "nivelamento_db_p1"
 * Navegar até o pacote src/test/java/testcases/
 * Na classe *registerMovementTest* clicar com o botão direito (Teste com email fixo)
 * Na classe *registerMovementTestFakeGeneration* clicar com o botão direito (Teste com email dinamico (randomico))
 * Clicar no menu "Run registerMovementTest
+#### Regressão
+* É possível também rodar a regressão de todos os testes
+* Navegar até o pacote src/teste/java/testsuites/
+* Na classe *RegressionTeste* clicar com o botão direito
+* Clicar na opção "Run RegressionTest"
 
 
 ### GERAÇÃO DE RELATÓRIO
