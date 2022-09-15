@@ -1,9 +1,12 @@
 package tasks;
 
+import Framework.Utils.PropertiesSaver;
 import Model.Movement;
 import pageobjects.MovementPage;
 import validations.MovementValidation;
 import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
 
 public class MovementTask {
 
@@ -18,7 +21,8 @@ public class MovementTask {
         movementValidation = new MovementValidation(driver);
     }
 
-    public void preencherCampos(Movement m) {
+    public void preencherCampos(Movement m) throws IOException {
+        PropertiesSaver.setValuesPropertiesMovement(m);
         movementPage.selectTipoDaMovimentacao(m.getTipoDaMovimentacao());
         movementPage.getDataMovimentacaoInput().sendKeys(m.getDataDaMovimentacao());
         movementPage.getDataDoPagamentoInput().sendKeys(m.getDataDoPagamento());

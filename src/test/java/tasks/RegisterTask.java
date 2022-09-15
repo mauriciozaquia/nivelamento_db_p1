@@ -4,6 +4,7 @@ import Framework.Utils.FakersGeneration;
 import Framework.Utils.PropertiesSaver;
 import pageobjects.RegistrationPage;
 import org.openqa.selenium.WebDriver;
+import validations.RegisterValidation;
 
 import java.io.IOException;
 
@@ -11,11 +12,13 @@ public class RegisterTask {
     private WebDriver driver;
     private RegistrationPage registrationPage;
     private FakersGeneration fakersGeneration;
+    private RegisterValidation registerValidation;
 
     public RegisterTask(WebDriver driver) {
         this.driver = driver;
         registrationPage = new RegistrationPage(this.driver);
         fakersGeneration = new FakersGeneration(this.driver);
+        registerValidation = new RegisterValidation(this.driver);
     }
 
     public void registerUser(String email, String user, String password) throws IOException {
@@ -24,6 +27,7 @@ public class RegisterTask {
         registrationPage.getPasswordInput().sendKeys("123123");
         registrationPage.getRegisterButton().click();
         PropertiesSaver.setValuesPropertiesUser(user, email, password);
+        registerValidation.validationRegisterExistingUserSucess();
     }
 
     public void registerUserFakersGeneration() throws IOException {
@@ -36,5 +40,6 @@ public class RegisterTask {
         registrationPage.getPasswordInput().sendKeys(password);
         registrationPage.getRegisterButton().click();
         PropertiesSaver.setValuesPropertiesUser(nome, email, password);
+        registerValidation.validationRegisterSucess();
     }
 }

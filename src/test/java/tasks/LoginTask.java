@@ -6,6 +6,7 @@ import pageobjects.WidgetNavBar;
 import validations.GenericValidation;
 import validations.LoginValidation;
 import org.openqa.selenium.WebDriver;
+import validations.RegisterValidation;
 
 public class LoginTask {
     private WebDriver driver;
@@ -14,6 +15,7 @@ public class LoginTask {
     private GenericValidation genericValidation;
     private FakersGeneration fakersGeneration;
     private WidgetNavBar widgetNavBar;
+    private RegisterValidation registerValidation;
 
     public LoginTask(WebDriver driver) {
         this.driver = driver;
@@ -22,12 +24,12 @@ public class LoginTask {
         genericValidation = new GenericValidation(this.driver);
         fakersGeneration = new FakersGeneration(this.driver);
         widgetNavBar = new WidgetNavBar(this.driver);
+        registerValidation = new RegisterValidation(this.driver);
     }
 
     public void entrar(String email, String password) {
         widgetNavBar.getNavBarItemPorTexto("Login").click();
         loginValidation.validationLoginPage();
-        //homePage.getLoginInput().sendKeys(fakersGeneration.getEmail());
         loginPage.getLoginInput().sendKeys(email);
         loginPage.getPasswordInput().sendKeys(password);
         loginPage.getLoginButton().click();
@@ -36,5 +38,6 @@ public class LoginTask {
 
     public void selectNewUser() {
         widgetNavBar.getNavBarItemPorTexto("Novo usuário?").click();
+        registerValidation.validationRedirectRegisterPage();
     }
 }

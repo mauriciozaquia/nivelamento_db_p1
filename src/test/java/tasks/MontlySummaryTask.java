@@ -24,7 +24,6 @@ public class MontlySummaryTask {
         } else {
             montlySummaryValidation.validationBalanceReceita(m);
         }
-
     }
 
     public void cleanMovimentation(){
