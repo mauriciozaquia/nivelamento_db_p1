@@ -26,33 +26,37 @@ public class RegisterValidation {
         try {
             waits.loadElement(registrationPage.getLoginInput());
             Assertions.assertTrue(registrationPage.getLoginInput().isDisplayed());
-            Report.log(Status.PASS, "Acessou a pagina Adicionar Usuário com sucesso", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Acessou a pagina Adicionar Usuário!", Screenshot.captureBase64(driver));
         } catch (Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problema para acessar a página Adicionar Usuário!" + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
-    public void validationRegisterSucess() {
+
+    public void validationRegister() {
         try {
             waits.loadElement(widgetAlert.getAlert());
             String alert = widgetAlert.getAlert().getText();
-            Assertions.assertEquals("Usuário inserido com sucesso", alert);
-            Report.log(Status.PASS, "Inseriu o usuário com sucesso!", Screenshot.captureBase64(driver));
-        } catch (Exception e) {
+            if (alert.contains("utilizado")) {
+                Assertions.assertEquals("Endereço de email já utilizado", alert);
+                Report.log(Status.PASS, "Validou que o endereço de email já está sendo utilizado!", Screenshot.captureBase64(driver));
+            } else {
+                Assertions.assertEquals("Usuário inserido com sucesso", alert);
+                Report.log(Status.PASS, "Inseriu o usuário com sucesso!", Screenshot.captureBase64(driver));
+            }
+        } catch (Error | Exception e) {
             System.out.println(e.getMessage());
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
-    public void validationRegisterExistingUserSucess() {
+    public void validationFields() {
         try {
-            waits.loadElement(widgetAlert.getAlert());
-            String alert = widgetAlert.getAlert().getText();
-            Assertions.assertEquals("Endereço de email já utilizado", alert);
-            Report.log(Status.PASS, "Validou que o endereço de email já está sendo utilizado!", Screenshot.captureBase64(driver));
-        } catch (AssertionError e) {
-            System.out.println(e.getMessage());
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Assertions.assertFalse(registrationPage.getLoginInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(registrationPage.getNameInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(registrationPage.getPasswordInput().getAttribute("value").equalsIgnoreCase(" "));
+            Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
         }
     }
-
 }

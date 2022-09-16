@@ -27,9 +27,18 @@ public class LoginValidation {
             waits.loadElement(loginPage.getLoginInput());
             Assertions.assertTrue(loginPage.getLoginInput().isDisplayed());
             Report.log(Status.PASS, "Acessou a pagina de login com sucesso", Screenshot.captureBase64(driver));
-        } catch (Exception e) {
+        } catch (Error | Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.capture(driver));
         }
     }
 
+    public void validationFields() {
+        try {
+            Assertions.assertFalse(loginPage.getLoginInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(loginPage.getPasswordInput().getAttribute("value").equalsIgnoreCase(" "));
+            Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+        }
+    }
 }

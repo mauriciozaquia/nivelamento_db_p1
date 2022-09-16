@@ -2,7 +2,6 @@ package Framework.Utils;
 
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.checkerframework.checker.index.qual.PolyUpperBound;
 import org.openqa.selenium.WebDriver;
 
 import java.text.Normalizer;
@@ -14,21 +13,15 @@ public class FakersGeneration {
     private String lastName;
     private String zipCode;
     private String email;
+    private String password;
 
     public FakersGeneration(WebDriver driver) {
         faker = new Faker(new Locale("pt-BR"));
     }
+
+    // User
     public String getFirstName() {
-        firstName = faker.name().firstName();
-        return removerAcentos(firstName);
-    }
-    public String getLastName() {
-        lastName = faker.name().lastName();
-        return removerAcentos(lastName);
-    }
-    public String getZipCode() {
-        zipCode = faker.address().zipCode();
-        return zipCode;
+        return faker.name().firstName();
     }
     public String getEmail() {
         return faker.name().firstName() + faker.name().lastName() + "@teste.com.br";
@@ -41,7 +34,16 @@ public class FakersGeneration {
         email = email.replaceAll(" ", "");
         return email;
     }
-    public static String removerAcentos(String str) {
-        return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
+
+    // Movement
+    public String getCreditCardNumber() {
+        return faker.business().creditCardNumber();
     }
+    public String getArtist() {
+        return faker.artist().name();
+    }
+    public double getValue() {
+        return faker.number().randomDouble(2,1,1000);
+    }
+
 }

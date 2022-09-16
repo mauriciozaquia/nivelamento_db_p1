@@ -1,9 +1,15 @@
 package tasks;
 
+import Framework.Utils.DateTime;
 import Model.Movement;
 import pageobjects.MontlySummaryPage;
 import validations.MontlySummaryValidation;
 import org.openqa.selenium.WebDriver;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class MontlySummaryTask {
     private WebDriver driver;
@@ -16,8 +22,12 @@ public class MontlySummaryTask {
     }
 
     public void searchMovimentation(Movement m) {
-        montlySummaryPage.selectMes("Setembro");
-        montlySummaryPage.selectYear("2022");
+        SimpleDateFormat formatarDate = new SimpleDateFormat("MM");
+        String mes = formatarDate.format(m.getDataDaMovimentacao());
+        formatarDate = new SimpleDateFormat("yyyy");
+        String year = formatarDate.format(m.getDataDaMovimentacao());
+        montlySummaryPage.selectMes(mes);
+        montlySummaryPage.selectYear(year);
         montlySummaryPage.getBuscarButton().click();
         if(m.getTipoDaMovimentacao().equals("Despesa")){
             montlySummaryValidation.validationBalanceDespesa(m);
@@ -26,9 +36,24 @@ public class MontlySummaryTask {
         }
     }
 
-    public void cleanMovimentation(){
-        montlySummaryPage.selectMes("Setembro");
-        montlySummaryPage.selectYear("2022");
+    public void cleanMovimentation(Date date){
+        SimpleDateFormat formatarDate = new SimpleDateFormat("MM");
+        String mes = formatarDate.format(date);
+        formatarDate = new SimpleDateFormat("yyyy");
+        String year = formatarDate.format(date);
+        montlySummaryPage.selectMes(mes);
+        montlySummaryPage.selectYear(year);
         montlySummaryPage.cleanTableMovement();
+    }
+
+    public void balance(Date date) throws IOException {
+        SimpleDateFormat formatarDate = new SimpleDateFormat("MM");
+        String mes = formatarDate.format(date);
+        formatarDate = new SimpleDateFormat("yyyy");
+        String year = formatarDate.format(date);
+        montlySummaryPage.selectMes(mes);
+        montlySummaryPage.selectYear(year);
+        montlySummaryPage.getBuscarButton().click();
+        montlySummaryValidation.validateBalance();
     }
 }

@@ -4,13 +4,20 @@ import Framework.Browser.JavaScriptExecutor;
 import Framework.Browser.Waits;
 import Framework.Report.Report;
 import Framework.Report.Screenshot;
+import Framework.Utils.FilesOperation;
+import Framework.Utils.PropertiesSaver;
 import Model.Movement;
+import dev.failsafe.internal.util.Assert;
+import org.openqa.selenium.WebElement;
 import pageobjects.MontlySummaryPage;
 import com.aventstack.extentreports.Status;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Properties;
 
 public class MontlySummaryValidation {
 
@@ -66,14 +73,30 @@ public class MontlySummaryValidation {
             js.highlight(this.driver, montlySummaryPage.getCampoValorTable(valorFormatado));
 
             Assertions.assertAll(
-                    //() -> Assertions.assertTrue(valorTela.contains(valorFormatado)),
                     () -> Assertions.assertEquals(valorFormatado, valorTela),
                     () -> Assertions.assertEquals(m.getConta(), montlySummaryPage.getCampoContaTable(m.getConta()).getText())
             );
 
-            Report.log(Status.PASS, "Valor" + m.getValor() + " correspondente encontrado na lista - Conta do tipo " + m.getConta(), Screenshot.captureBase64(driver));
-        } catch (Exception e) {
+            Report.log(Status.PASS, "Valor " + m.getValor() + " correspondente encontrado na lista - Conta do tipo " + m.getConta(), Screenshot.captureBase64(driver));
+        } catch (Error | Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
+    }
+
+    public void validateBalance() throws IOException {
+        Double somaTela = 0.0;
+        List<WebElement> itens = montlySummaryPage.getAllFieldsValorTable();
+        for (WebElement element : itens) {
+            somaTela  = somaTela  + Double.parseDouble(element.getText());
+        }
+        Double somaProperties = Double.parseDouble(FilesOperation.getProperties("balance").getProperty("balance"));
+        try{
+            double finalSomaTela = somaTela;
+            Assertions.assertEquals(finalSomaTela, somaProperties);
+            Report.log(Status.PASS, "Saldo inserido nas movimentações: " + somaProperties +  " Saldo na tela: " + somaTela + " são iguais!");
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, "Saldo diferente! " + e.getMessage(), Screenshot.captureBase64(driver));
+        }
+
     }
 }

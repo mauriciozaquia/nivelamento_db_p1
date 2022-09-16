@@ -2,6 +2,7 @@ package tasks;
 
 import Framework.Utils.FakersGeneration;
 import Framework.Utils.PropertiesSaver;
+import Model.User;
 import pageobjects.RegistrationPage;
 import org.openqa.selenium.WebDriver;
 import validations.RegisterValidation;
@@ -21,25 +22,13 @@ public class RegisterTask {
         registerValidation = new RegisterValidation(this.driver);
     }
 
-    public void registerUser(String email, String user, String password) throws IOException {
-        registrationPage.getNameInput().sendKeys("teste");
-        registrationPage.getLoginInput().sendKeys("a@a.com.br");
-        registrationPage.getPasswordInput().sendKeys("123123");
+    public void registerUser(User user) throws IOException {
+        registrationPage.getNameInput().sendKeys(user.getNome());
+        registrationPage.getLoginInput().sendKeys(user.getLogin());
+        registrationPage.getPasswordInput().sendKeys(user.getPassword());
+        registerValidation.validationFields();
+        PropertiesSaver.setValuesPropertiesUser(user.getNome(), user.getLogin(), user.getPassword());
         registrationPage.getRegisterButton().click();
-        PropertiesSaver.setValuesPropertiesUser(user, email, password);
-        registerValidation.validationRegisterExistingUserSucess();
-    }
-
-    public void registerUserFakersGeneration() throws IOException {
-        String nome = fakersGeneration.getFirstName();
-        String email = fakersGeneration.getEmailRandomico(nome, 20);
-        String password = "123123";
-
-        registrationPage.getNameInput().sendKeys(nome);
-        registrationPage.getLoginInput().sendKeys(email);
-        registrationPage.getPasswordInput().sendKeys(password);
-        registrationPage.getRegisterButton().click();
-        PropertiesSaver.setValuesPropertiesUser(nome, email, password);
-        registerValidation.validationRegisterSucess();
+        registerValidation.validationRegister();
     }
 }

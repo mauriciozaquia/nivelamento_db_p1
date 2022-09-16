@@ -25,7 +25,7 @@ public class HomeValidation {
             waits.loadElement(homePage.getSaldoTable());
             Assertions.assertTrue(homePage.getSaldoTable().isDisplayed());
             Report.log(Status.PASS, "Acessou a pagina home com sucesso", Screenshot.capture(driver));
-        } catch (Exception e) {
+        } catch (Error | Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.capture(driver));
         }
     }

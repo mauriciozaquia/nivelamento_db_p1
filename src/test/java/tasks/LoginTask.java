@@ -1,6 +1,7 @@
 package tasks;
 
 import Framework.Utils.FakersGeneration;
+import Model.User;
 import pageobjects.LoginPage;
 import pageobjects.WidgetNavBar;
 import validations.GenericValidation;
@@ -27,15 +28,15 @@ public class LoginTask {
         registerValidation = new RegisterValidation(this.driver);
     }
 
-    public void entrar(String email, String password) {
+    public void signin(User user) {
         widgetNavBar.getNavBarItemPorTexto("Login").click();
         loginValidation.validationLoginPage();
-        loginPage.getLoginInput().sendKeys(email);
-        loginPage.getPasswordInput().sendKeys(password);
+        loginPage.getLoginInput().sendKeys(user.getLogin());
+        loginPage.getPasswordInput().sendKeys(user.getPassword());
+        loginValidation.validationFields();
         loginPage.getLoginButton().click();
         genericValidation.validationPageHome();
     }
-
     public void selectNewUser() {
         widgetNavBar.getNavBarItemPorTexto("Novo usuário?").click();
         registerValidation.validationRedirectRegisterPage();

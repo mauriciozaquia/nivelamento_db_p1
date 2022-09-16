@@ -1,15 +1,17 @@
 package Model;
 
+import java.util.Date;
+
 public class Movement {
 
     private String tipoDaMovimentacao;
-    private String dataDaMovimentacao;
-    private String dataDoPagamento;
+    private Date dataDaMovimentacao;
+    private Date dataDoPagamento;
     private String descricao;
     private String interessado;
     private Double valor;
     private String conta;
-    private String situaca;
+    private String situacao;
 
     public String getTipoDaMovimentacao() {
         return tipoDaMovimentacao;
@@ -19,19 +21,19 @@ public class Movement {
         this.tipoDaMovimentacao = tipoDaMovimentacao;
     }
 
-    public String getDataDaMovimentacao() {
+    public Date getDataDaMovimentacao() {
         return dataDaMovimentacao;
     }
 
-    public void setDataDaMovimentacao(String dataDaMovimentacao) {
+    public void setDataDaMovimentacao(Date dataDaMovimentacao) {
         this.dataDaMovimentacao = dataDaMovimentacao;
     }
 
-    public String getDataDoPagamento() {
+    public Date getDataDoPagamento() {
         return dataDoPagamento;
     }
 
-    public void setDataDoPagamento(String dataDoPagamento) {
+    public void setDataDoPagamento(Date dataDoPagamento) {
         this.dataDoPagamento = dataDoPagamento;
     }
 
@@ -67,11 +69,11 @@ public class Movement {
         this.conta = conta;
     }
 
-    public String getSituaca() {
-        return situaca;
+    public String getSituacao() {
+        return situacao;
     }
 
-    public void setSituaca(String situaca) {
-        this.situaca = situaca;
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
     }
 }

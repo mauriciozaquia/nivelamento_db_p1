@@ -2,7 +2,7 @@ package tasks;
 
 import pageobjects.HomePage;
 import pageobjects.WidgetNavBar;
-import validations.AddAccountValidation;
+import validations.AccountValidation;
 import validations.MontlySummaryValidation;
 import validations.MovementValidation;
 import org.openqa.selenium.WebDriver;
@@ -11,14 +11,14 @@ public class HomeTask {
     private WebDriver driver;
     private HomePage homePage;
     private WidgetNavBar widgetNavBar;
-    private AddAccountValidation addAccountValidation;
+    private AccountValidation accountValidation;
     private MovementValidation movementValidation;
     private MontlySummaryValidation montlySummaryValidation;
     public HomeTask(WebDriver driver) {
         this.driver = driver;
         homePage = new HomePage(this.driver);
         widgetNavBar = new WidgetNavBar(this.driver);
-        addAccountValidation = new AddAccountValidation(this.driver);
+        accountValidation = new AccountValidation(this.driver);
         movementValidation = new MovementValidation(this.driver);
         montlySummaryValidation = new MontlySummaryValidation(this.driver);
     }
@@ -31,7 +31,7 @@ public class HomeTask {
     public void selectCreateAccount() {
         widgetNavBar.getNavBarItemPorTexto("Contas").click();
         widgetNavBar.getNavBarSubItemPorTexto("/addConta").click();
-        addAccountValidation.validationRedirectPageHome();
+        accountValidation.validationRedirectPageHome();
     }
 
     public void selectMonthlySummary() {

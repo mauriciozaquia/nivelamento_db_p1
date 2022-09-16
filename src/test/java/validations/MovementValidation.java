@@ -10,12 +10,11 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
 public class MovementValidation {
-
-
     private WebDriver driver;
     private MovementPage movementPage;
     private Waits waits;
     private WidgetAlert widgetAlert;
+
     public MovementValidation(WebDriver driver) {
         this.driver = driver;
         waits = new Waits(this.driver);
@@ -42,5 +41,19 @@ public class MovementValidation {
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
+    }
+
+    public void validationFields() {
+        try {
+            Assertions.assertFalse(movementPage.getDataMovimentacaoInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(movementPage.getDataDoPagamentoInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(movementPage.getDescricaoInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(movementPage.getInteressadoInput().getAttribute("value").equalsIgnoreCase(" "));
+            Assertions.assertFalse(movementPage.getValorInput().getAttribute("value").equalsIgnoreCase(" "));
+            Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+        }
+
     }
 }

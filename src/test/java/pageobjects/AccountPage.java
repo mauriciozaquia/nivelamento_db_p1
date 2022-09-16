@@ -5,11 +5,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class AddAccountPage {
+public class AccountPage {
     private WebDriver driver;
     private Waits waits;
 
-    public AddAccountPage(WebDriver driver) {
+    public AccountPage(WebDriver driver) {
         this.driver = driver;
         waits = new Waits(this.driver);
     }
