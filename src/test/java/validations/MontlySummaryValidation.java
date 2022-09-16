@@ -57,7 +57,7 @@ public class MontlySummaryValidation {
                     () -> Assertions.assertEquals(m.getConta(), montlySummaryPage.getCampoContaTable(m.getConta()).getText())
             );
 
-            Report.log(Status.PASS, "Valor" + m.getValor() + " correspondente encontrado na lista - Conta do tipo " + m.getConta(), Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Valor " + m.getValor() + " correspondente encontrado na lista - Conta do tipo " + m.getConta(), Screenshot.captureBase64(driver));
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }
