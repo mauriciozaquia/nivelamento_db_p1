@@ -26,9 +26,9 @@ public class GenericValidation {
             waits.loadElement(genericPage.getHomeLabelText());
             String label = genericPage.getHomeLabelText().getText();
             Assertions.assertEquals(label, "Seu Barriga");
-            Report.log(Status.PASS, " Acessou a pagina home com sucesso", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, " Acessou a pagina Home com sucesso", Screenshot.captureBase64(driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problema ao acessar a pagina Home" + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 

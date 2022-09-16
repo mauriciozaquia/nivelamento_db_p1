@@ -27,9 +27,9 @@ public class AccountValidation {
         try {
             waits.loadElement(accountPage.getNomeInput());
             Assertions.assertTrue(accountPage.getNomeInput().isDisplayed());
-            Report.log(Status.PASS, " Acessou a pagina Adicionar Conta com sucesso", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Acessou a pagina Adicionar Conta com sucesso", Screenshot.captureBase64(driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problema ao acessar a pagina Adicionar Conta " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -40,7 +40,7 @@ public class AccountValidation {
             Assertions.assertEquals(alert, "Conta adicionada com sucesso!");
             Report.log(Status.PASS, "Cadastrou a conta com sucesso", Screenshot.captureBase64(driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problema ao cadastrar a conta " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -51,7 +51,7 @@ public class AccountValidation {
             Assertions.assertEquals(alert, "Já existe uma conta com esse nome!");
             Report.log(Status.PASS, "Verificou que já existe uma conta com esse nome inserida!", Screenshot.captureBase64(driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problema ao verificar conta " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -60,7 +60,7 @@ public class AccountValidation {
             Assertions.assertFalse(accountPage.getNomeInput().getAttribute("value").equalsIgnoreCase(" "));
             Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+            Report.log(Status.FAIL, "Problema ao verificar os dados do form " + e.getMessage(), Screenshot.captureBase64(this.driver));
         }
     }
 }

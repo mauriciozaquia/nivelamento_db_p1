@@ -22,7 +22,7 @@ import models.MovementType;
 
 import java.io.IOException;
 
-public class RegisterMovementFakeGenerationTest extends TestBase {
+public class RegisterMovementFakerTest extends TestBase {
     private WebDriver driver = this.getDriver();
     LoginTask login = new LoginTask(driver);
     RegisterTask register = new RegisterTask(driver);
@@ -57,20 +57,20 @@ public class RegisterMovementFakeGenerationTest extends TestBase {
         movementDespesa.setSituacao(MovementSituation.PAGO.toString());
 
         user = new User();
-        user.setNome(Formatter.removerAcentos(fakers.getFirstName()));
+        user.setNome(Formatter.accentRemove(fakers.getFirstName()));
         user.setLogin(Formatter.lowerCase(fakers.getEmailRandomico(user.getNome(), 20)));
         user.setPassword("123123");
 
-        PropertiesSaver.zeraSaldo();
+        PropertiesSaver.setValuesPropertiesBalanceZeraSaldo();
     }
 
     @Test
     @Tag("Regressao")
-    @Description("Validar inserir movimentações com sucesso - Fake Generation")
+    @Description("Validar inserir movimentações com sucesso - Faker")
     public void validateRealizeMovement() {
         try {
-            Report.creatTest("Realizar registro de movimentação - Fakers Generation", ReportType.GROUP);
-            Report.createStep("Realizar cadastro de usuário");
+            Report.creatTest("Realizar registro de movimentação - Faker", ReportType.GROUP);
+            Report.createStep("Cadastrar usuário");
             login.selectNewUser();
             register.registerUser(user);
             Report.createStep("Realizar login");
@@ -89,8 +89,11 @@ public class RegisterMovementFakeGenerationTest extends TestBase {
             movement.add(movementDespesa);
             home.selectMonthlySummary();
             montlySummary.searchMovimentation(movementDespesa);
-            Report.createStep("Validar saldo");
+            Report.createStep("Validar saldo - Relatório mensal");
             montlySummary.balance(DateTime.getActuaDateTime());
+            Report.createStep("Validar saldo - Home");
+            home.selectHome();
+            home.balance();
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }

@@ -26,9 +26,9 @@ public class LoginValidation {
         try {
             waits.loadElement(loginPage.getLoginInput());
             Assertions.assertTrue(loginPage.getLoginInput().isDisplayed());
-            Report.log(Status.PASS, "Acessou a pagina de login com sucesso", Screenshot.captureBase64(driver));
+            Report.log(Status.PASS, "Acessou a pagina de Login com sucesso", Screenshot.captureBase64(driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.capture(driver));
+            Report.log(Status.FAIL, "Problema ao acessar a pagina Login " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -38,7 +38,7 @@ public class LoginValidation {
             Assertions.assertFalse(loginPage.getPasswordInput().getAttribute("value").equalsIgnoreCase(" "));
             Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+            Report.log(Status.FAIL, "Problema ao verificar os dados do form " + e.getMessage(), Screenshot.captureBase64(this.driver));
         }
     }
 }

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Formatter {
 
-    public static String removerAcentos(String str) {
+    public static String accentRemove(String str) {
         return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
     }
 
@@ -14,8 +14,8 @@ public class Formatter {
         return texto.toLowerCase();
     }
 
-    public static  String formataData(Date data) {
-        SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
-        return formatarDate.format(data);
+    public static  String formatteDate(Date data) {
+        SimpleDateFormat formatteDate = new SimpleDateFormat("dd/MM/yyyy");
+        return formatteDate.format(data);
     }
 }

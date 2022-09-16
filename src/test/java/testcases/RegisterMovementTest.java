@@ -59,7 +59,7 @@ public class RegisterMovementTest extends TestBase {
         movementDespesa.setConta(MovementType.DESPESA.toString());
         movementDespesa.setSituacao(MovementSituation.PAGO.toString());
 
-        PropertiesSaver.zeraSaldo();
+        PropertiesSaver.setValuesPropertiesBalanceZeraSaldo();
     }
 
     @ParameterizedTest
@@ -74,17 +74,17 @@ public class RegisterMovementTest extends TestBase {
             user.setPassword(password);
 
             Report.creatTest("Realizar registro de movimentação - Email Fixo", ReportType.GROUP);
-            Report.createStep("Realizar cadastro com sucesso");
+            Report.createStep("Cadastrar usuário");
             login.selectNewUser();
             register.registerUser(user);
-            Report.createStep("Realizar login com sucesso");
+            Report.createStep("Realizar login");
             login.signin(user);
-            Report.createStep("Cadastrar contas com sucesso");
+            Report.createStep("Cadastrar contas");
             home.selectCreateAccount();
-            addAccount.add("Receita");
+            addAccount.add(MovementType.RECEITA.toString());
             home.selectCreateAccount();
-            addAccount.add("Despesa");
-            Report.createStep("Realizar movimentação com sucesso");
+            addAccount.add(MovementType.DESPESA.toString());
+            Report.createStep("Realizar movimentação");
             home.selectMonthlySummary();
             montlySummary.cleanMovimentation(DateTime.getActuaDateTime());
             home.selectCreateMovimentation();
@@ -95,8 +95,11 @@ public class RegisterMovementTest extends TestBase {
             movement.add(movementDespesa);
             home.selectMonthlySummary();
             montlySummary.searchMovimentation(movementDespesa);
-            Report.createStep("Validar saldo com sucesso");
+            Report.createStep("Validar saldo - Relatório mensal");
             montlySummary.balance(DateTime.getActuaDateTime());
+            Report.createStep("Validar saldo - Home");
+            home.selectHome();
+            home.balance();
         } catch (Exception e) {
             Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
         }

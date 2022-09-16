@@ -1,7 +1,5 @@
 package tasks;
 
-import Framework.Utils.DateTime;
-import Framework.Utils.FilesOperation;
 import Framework.Utils.Formatter;
 import Framework.Utils.PropertiesSaver;
 import Model.Movement;
@@ -26,8 +24,8 @@ public class MovementTask {
     public void add(Movement m) throws IOException {
         PropertiesSaver.setValuesPropertiesMovement(m);
         movementPage.selectTipoDaMovimentacao(m.getTipoDaMovimentacao());
-        movementPage.getDataMovimentacaoInput().sendKeys(Formatter.formataData(m.getDataDaMovimentacao()));
-        movementPage.getDataDoPagamentoInput().sendKeys(Formatter.formataData(m.getDataDoPagamento()));
+        movementPage.getDataMovimentacaoInput().sendKeys(Formatter.formatteDate(m.getDataDaMovimentacao()));
+        movementPage.getDataDoPagamentoInput().sendKeys(Formatter.formatteDate(m.getDataDoPagamento()));
         movementPage.getDescricaoInput().sendKeys(m.getDescricao());
         movementPage.getInteressadoInput().sendKeys(m.getInteressado());
         movementPage.getValorInput().sendKeys(Double.toString(m.getValor()));
@@ -36,6 +34,6 @@ public class MovementTask {
         movementValidation.validationFields();
         movementPage.getSalvarButton().click();
         movementValidation.validationMovementSucess();
-        PropertiesSaver.atualizaSaldo(m);
+        PropertiesSaver.setValuePropertiesBalanceAtualizaSaldo(m);
     }
 }

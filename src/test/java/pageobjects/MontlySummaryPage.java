@@ -65,7 +65,7 @@ public class MontlySummaryPage {
         }
     }
 
-    public WebElement getCampoContaTable(String texto){
+    public WebElement getFieldContaTable(String texto){
         List<WebElement> list = driver.findElements(By.cssSelector("#tabelaExtrato tbody tr td:nth-child(3)"));
         for (WebElement element : list) {
             if(element.getText().equals(texto)){
@@ -74,7 +74,7 @@ public class MontlySummaryPage {
         }
         return null;
     }
-    public WebElement getCampoValorTable(String texto){
+    public WebElement getFieldValorTable(String texto){
         List<WebElement> list = driver.findElements(By.cssSelector("#tabelaExtrato tbody tr td:nth-child(4)"));
         for (WebElement element : list) {
             if(element.getText().contains(texto)){

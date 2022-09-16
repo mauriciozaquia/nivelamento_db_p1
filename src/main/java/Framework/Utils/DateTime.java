@@ -18,20 +18,6 @@ public class DateTime {
         return dateTimeFormatter.format(localDateTime);
     }
 
-    //
-
-    public static String getActualDateTimeString() {
-        Date data = new Date(System.currentTimeMillis());
-        SimpleDateFormat formatarDate = new SimpleDateFormat("dd/MM/yyyy");
-        return formatarDate.format(data);
-    }
-
-    public static String getActualDateTimeString(String format) {
-        Date data = new Date(System.currentTimeMillis());
-        SimpleDateFormat formatarDate = new SimpleDateFormat(format);
-        return formatarDate.format(data);
-    }
-
     public static Date getActuaDateTime(){
         Date data = new Date(System.currentTimeMillis());
         return data;

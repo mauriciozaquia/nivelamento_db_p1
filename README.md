@@ -19,9 +19,12 @@ Além disto é bom ter uma IDE Java para trabalhar com o código como por exempl
 #### Classes
 * Abra o projeto "nivelamento_db_p1"
 * Navegar até o pacote src/test/java/testcases/
-* Na classe *registerMovementTest* clicar com o botão direito (Teste com email fixo)
-* Na classe *registerMovementTestFakeGeneration* clicar com o botão direito (Teste com email dinamico (randomico))
-* Clicar no menu "Run registerMovementTest
+#### Teste com email fixo
+* Na classe *RegisterMovementTest* clicar com o botão direito
+* Clicar no menu "Run RegisterMovementTest
+#### Teste com email dinâmico (randomico) e dados gerados pelo Javafaker 
+* Na classe *RegisterMovementFakerTest* clicar com o botão direito
+* Clicar no menu "Run RegisterMovementFakerTest
 #### Regressão
 * É possível também rodar a regressão de todos os testes
 * Navegar até o pacote src/teste/java/testsuites/

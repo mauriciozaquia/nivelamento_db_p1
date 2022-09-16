@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class HomePage {
 
     private WebDriver driver;
@@ -23,4 +25,8 @@ public class HomePage {
         return  driver.findElement(By.cssSelector(".nav.navbar-nav li:nth-child(3)"));
     }
 
+    public List<WebElement> getAllFieldsValorTable(){
+        List<WebElement> list = driver.findElements(By.cssSelector("#tabelaSaldo tbody tr td:nth-child(2)"));
+        return list;
+    }
 }

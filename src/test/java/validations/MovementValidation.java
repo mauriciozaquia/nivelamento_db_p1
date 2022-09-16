@@ -27,8 +27,8 @@ public class MovementValidation {
             waits.loadElement(movementPage.getContaSelect());
             Assertions.assertTrue(movementPage.getContaSelect().isDisplayed());
             Report.log(Status.PASS, "Acessou a pagina Adicionar Movimento com sucesso", Screenshot.captureBase64(driver));
-        } catch (Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, "Problema ao acessar a pagina Adicionar Movimento " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -38,8 +38,8 @@ public class MovementValidation {
             String alert = widgetAlert.getAlert().getText();
             Assertions.assertEquals("Movimentação adicionada com sucesso!", alert);
             Report.log(Status.PASS, "Inseriu o movimento com sucesso", Screenshot.captureBase64(driver));
-        } catch (Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+        } catch (Error | Exception e) {
+            Report.log(Status.FAIL, "Problema ao adicionar movimento " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -52,7 +52,7 @@ public class MovementValidation {
             Assertions.assertFalse(movementPage.getValorInput().getAttribute("value").equalsIgnoreCase(" "));
             Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+            Report.log(Status.FAIL, "Problema ao verificar os dados do form  " + e.getMessage(), Screenshot.captureBase64(this.driver));
         }
 
     }

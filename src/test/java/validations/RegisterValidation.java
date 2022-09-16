@@ -27,7 +27,7 @@ public class RegisterValidation {
             waits.loadElement(registrationPage.getLoginInput());
             Assertions.assertTrue(registrationPage.getLoginInput().isDisplayed());
             Report.log(Status.PASS, "Acessou a pagina Adicionar Usuário!", Screenshot.captureBase64(driver));
-        } catch (Exception e) {
+        } catch (Error | Exception e) {
             Report.log(Status.FAIL, "Problema para acessar a página Adicionar Usuário!" + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
@@ -45,7 +45,7 @@ public class RegisterValidation {
             }
         } catch (Error | Exception e) {
             System.out.println(e.getMessage());
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+            Report.log(Status.FAIL, "Problma ao inserir usuário " + e.getMessage(), Screenshot.captureBase64(driver));
         }
     }
 
@@ -56,7 +56,7 @@ public class RegisterValidation {
             Assertions.assertFalse(registrationPage.getPasswordInput().getAttribute("value").equalsIgnoreCase(" "));
             Report.log(Status.PASS, "Dados do form preenchidos corretamente!", Screenshot.captureBase64(this.driver));
         } catch (Error | Exception e) {
-            Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(this.driver));
+            Report.log(Status.FAIL, "Problema ao verificar os dados do form " + e.getMessage(), Screenshot.captureBase64(this.driver));
         }
     }
 }
